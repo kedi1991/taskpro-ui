@@ -2,6 +2,7 @@ import { Container } from 'react-bootstrap';
 import './App.css';
 import SideNavBar from './components/SideNavBar';
 import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
+import './api/axiosDefaults';
 
 
 function App() {
