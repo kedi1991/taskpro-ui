@@ -39,6 +39,10 @@ function SideNavBar() {
                 <a href='#'>View projects</a><br/>
               </Accordion.Body>
             </Accordion.Item>
+            <br></br>
+            <a href='/signin'>Sign in</a>
+            <br></br>
+            <a href='/register'>Sign out</a>
           </Accordion>
         </Offcanvas.Body>
       </Offcanvas>

@@ -29,6 +29,10 @@ TaskPRO is a task management app built using the Django framework. Using this ap
 
 9. As a logged in user, I should be able to dsiplay task details
 
+10. As a logged out user, I should be able to sign in so that I access my information
+
+11. As a new user, I should be able to register in order to user all features of the app
+
 
 **Entity Relationship Diagram**
 
