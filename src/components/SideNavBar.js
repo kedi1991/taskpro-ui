@@ -42,7 +42,7 @@ function SideNavBar() {
             <br></br>
             <a href='/signin'>Sign in</a>
             <br></br>
-            <a href='/register'>Sign out</a>
+            <a href='/register'>Register</a>
           </Accordion>
         </Offcanvas.Body>
       </Offcanvas>
