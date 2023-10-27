@@ -5,10 +5,14 @@ import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import './api/axiosDefaults';
 import RegisterForm from './pages/auth/RegisterForm';
 import SignInForm from './pages/auth/SignInForm';
-import { createContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import axios from 'axios';
 
 export const ActiveUserContext = createContext();
 export const SetActiveUserContext = createContext();
+
+export const useActiveUser = () => useContext(ActiveUserContext);
+export const useSetActiveUser = () => useContext(SetActiveUserContext);
 
 function App() {
 
@@ -27,8 +31,8 @@ function App() {
   }, []);
 
   return (
-    <CurrentUserContext.Provider value={activeUser}>
-      <SetCurrentUserContext.Provider value={setActiveUser}>
+    <ActiveUserContext.Provider value={activeUser}>
+      <SetActiveUserContext.Provider value={setActiveUser}>
         <div className="App">
           <SideNavBar>
           </SideNavBar>
@@ -41,8 +45,8 @@ function App() {
             </Switch>
           </Container>
         </div >
-      </SetCurrentUserContext.Provider>
-    </CurrentUserContext.Provider>
+      </SetActiveUserContext.Provider>
+    </ActiveUserContext.Provider>
   );
 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 
 import Form from "react-bootstrap/Form";
@@ -14,6 +14,7 @@ import { Link, useHistory } from "react-router-dom";
 import styles from "../../styles/AuthForms.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import { SetActiveUserContext } from "../../App";
 
 function SignInForm() {
   const [signInData, setSignInData] = useState({
@@ -25,10 +26,14 @@ function SignInForm() {
   const [errors, setErrors] = useState({});
 
   const history = useHistory();
+
+  const setActiveUser = useContext(SetActiveUserContext);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("/dj-rest-auth/login/", signInData);
+      const {data} = await axios.post("/dj-rest-auth/login/", signInData);
+      setActiveUser(data.user)
       history.push("/");
     } catch (err) {
       setErrors(err.response?.data);
@@ -95,7 +100,7 @@ function SignInForm() {
           </Form>
         </Container>
         <Container className={`mt-3 ${appStyles.Content}`}>
-          <Link className={styles.Link} to="/signup">
+          <Link className={styles.Link} to="/register">
             Don't have an account? <span>Sign up now!</span>
           </Link>
         </Container>
