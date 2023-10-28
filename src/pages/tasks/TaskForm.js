@@ -11,10 +11,13 @@ import Upload from "../../assets/upload.png";
 import styles from "../../styles/TaskForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import axios from "axios";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function TaskForm() {
 
     const [errors, setErrors] = useState({});
+    const history = useHistory();
 
     const [taskData, setTaskData] = useState({
         task_name: "",
@@ -34,50 +37,56 @@ function TaskForm() {
     };
 
     const handleSubmit = async (event) => {
-    event.preventDefault();
-    const formData = new FormData();
+        event.preventDefault();
+        const formData = new FormData();
 
-    formData.append("title", title);
-    formData.append("content", content);
-    formData.append("image", imageInput.current.files[0]);
+        formData.append("task_name", task_name);
+        formData.append("description", description);
+        formData.append("assignees", assignees);
+        formData.append("project", project);
+        formData.append("description", description);
+        formData.append("status", status);
+        formData.append("attachment", attachment);
 
-    try {
-      const { data } = await axiosReq.post("/posts/", formData);
-      history.push(`/posts/${data.id}`);
-    } catch (err) {
-      console.log(err);
-      if (err.response?.status !== 401) {
-        setErrors(err.response?.data);
-      }
-    }
-  };
+        try {
 
-    const textFields = (
+            const { data } = await axios.post("/tasks/", formData);
+            history.push(`/tasks/${data.id}`);
+
+        } catch (err) {
+            console.log(err);
+            if (err.response?.status !== 401) {
+                setErrors(err.response?.data);
+            }
+        }
+    };
+
+    const otherFields = (
         <div className="text-center">
 
             <Form.Group controlId="task_name">
                 <Form.Label>Task name</Form.Label>
-                <Form.Control type="text" name="task_name" value={task_name} onChange={handleChange}/>
+                <Form.Control type="text" name="task_name" value={task_name} onChange={handleChange} />
             </Form.Group>
             <Form.Group controlId="description">
                 <Form.Label>Description</Form.Label>
-                <Form.Control type="text" name="description" value={description} onChange={handleChange}/>
+                <Form.Control type="text" name="description" value={description} onChange={handleChange} />
             </Form.Group>
             <Form.Group controlId="assignees">
                 <Form.Label>Assignees</Form.Label>
-                <Form.Control type="text" name="assignees" value={assignees} onChange={handleChange}/>
+                <Form.Control type="text" name="assignees" value={assignees} onChange={handleChange} />
             </Form.Group>
             <Form.Group controlId="project">
                 <Form.Label>Project</Form.Label>
-                <Form.Control type="text" name="project" value={project} onChange={handleChange}/>
+                <Form.Control type="text" name="project" value={project} onChange={handleChange} />
             </Form.Group>
             <Form.Group controlId="status">
                 <Form.Label>Status</Form.Label>
-                <Form.Control type="text" name="status" value={status} onChange={handleChange}/>
+                <Form.Control type="text" name="status" value={status} onChange={handleChange} />
             </Form.Group>
             <Form.Group controlId="attachment">
                 <Form.Label>attachment</Form.Label>
-                <Form.Control type="text" name="attachment" value={attachment} onChange={handleChange}/>
+                <Form.Control type="text" name="attachment" value={attachment} onChange={handleChange} />
             </Form.Group>
             <br></br>
             <Button
@@ -93,7 +102,7 @@ function TaskForm() {
     );
 
     return (
-        <Form>
+        <Form onSubmit={handleSubmit}>
             <Row>
                 <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
                     <Container
@@ -109,11 +118,11 @@ function TaskForm() {
                             </Form.Label>
 
                         </Form.Group>
-                        <div className="d-md-none">{textFields}</div>
+                        <div className="d-md-none">{otherFields}</div>
                     </Container>
                 </Col>
                 <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-                    <Container className={appStyles.Content}>{textFields}</Container>
+                    <Container className={appStyles.Content}>{otherFields}</Container>
                 </Col>
             </Row>
         </Form>
