@@ -44,7 +44,7 @@ function App() {
               <Route exact path="/signin" render={() => <SignInForm></SignInForm>} />
               <Route exact path="/register" render={() => <RegisterForm></RegisterForm>} />
               <Route exact path="/task/create" render={() => <TaskForm></TaskForm>} />
-              <Route exact path="/task/:id" render={() => <TaskView></TaskView>} />
+              <Route exact path="/tasks/:id" render={() => <TaskView></TaskView>} />
               <Route render={() => <p>The gods are wise, but they can't seem to understand your request!</p>} />
             </Switch>
           </Container>

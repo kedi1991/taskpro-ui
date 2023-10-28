@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import appStyles from "../../App.module.css";
 import axios from "axios";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import Task from "./Task";
 
 function TaskView() {
   const { id } = useParams();
@@ -34,7 +35,7 @@ function TaskView() {
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <p>Task for mobile</p>
-        <p>Task component</p>
+        <Task {...task.results[0]} setTask={setTask} TaskView />
         <Container className={appStyles.Content}>
           Comments
         </Container>
