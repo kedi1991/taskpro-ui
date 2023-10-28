@@ -6,7 +6,6 @@ import { ActiveUserContext, SetActiveUserContext, useSetActiveUser } from '../Ap
 import styles from "../styles/AuthForms.module.css";
 import axios from 'axios';
 
-
 function SideNavBar() {
   const [show, setShow] = useState(false);
 
@@ -48,7 +47,7 @@ function SideNavBar() {
               <Accordion.Header>TASKS</Accordion.Header>
               <Accordion.Body>
                 <a href='#'>View tasks</a><br/>
-                <a href='#'>Add task</a><br/>
+                <a href='/task/create'>Add task</a><br/>
                 <a href='#'>Delete task</a><br/>
                 <a href='#'>Edit task</a><br/>
 
@@ -67,7 +66,7 @@ function SideNavBar() {
             <br></br>
             <a href='/register'>Register</a>
             <br></br>
-            <a href='/'>sign out</a>
+            <a href='/' onClick={handleSignOut}>sign out</a>
             {activeUser? <h1>{activeUser.username}</h1> : <h1>outside</h1>}
 
          

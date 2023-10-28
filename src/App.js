@@ -7,6 +7,7 @@ import RegisterForm from './pages/auth/RegisterForm';
 import SignInForm from './pages/auth/SignInForm';
 import { createContext, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import TaskForm from './pages/tasks/TaskForm';
 
 export const ActiveUserContext = createContext();
 export const SetActiveUserContext = createContext();
@@ -41,6 +42,7 @@ function App() {
               <Route exact path="/" render={() => <h1>Home page</h1>} />
               <Route exact path="/signin" render={() => <SignInForm></SignInForm>} />
               <Route exact path="/register" render={() => <RegisterForm></RegisterForm>} />
+              <Route exact path="/task/create" render={() => <TaskForm></TaskForm>} />
               <Route render={() => <p>The gods are wise, but they can't seem to understand your request!</p>} />
             </Switch>
           </Container>
