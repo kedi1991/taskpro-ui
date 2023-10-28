@@ -14,51 +14,110 @@ import btnStyles from "../../styles/Button.module.css";
 
 function TaskForm() {
 
-  const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({});
 
+    const [taskData, setTaskData] = useState({
+        task_name: "",
+        description: "",
+        assignees: "",
+        project: "",
+        status: "",
+        attachment: "",
+    });
+    const { task_name, description, assignees, project, status, attachment } = taskData;
 
-  const textFields = (
-    <div className="text-center">
-      {/* Add your form fields here */}
+    const handleChange = (event) => {
+        setTaskData({
+            ...taskData,
+            [event.target.name]: event.target.value,
+        });
+    };
 
-      <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => {}}
-      >
-        cancel
-      </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        create
-      </Button>
-    </div>
-  );
+    const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
 
-  return (
-    <Form>
-      <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-          <Container
-            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
-          >
-            <Form.Group className="text-center">
-              
-                <Form.Label
-                  className="d-flex justify-content-center"
-                  htmlFor="image-upload"
-                >
-                  ASSET
-                </Form.Label>
+    formData.append("title", title);
+    formData.append("content", content);
+    formData.append("image", imageInput.current.files[0]);
 
+    try {
+      const { data } = await axiosReq.post("/posts/", formData);
+      history.push(`/posts/${data.id}`);
+    } catch (err) {
+      console.log(err);
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data);
+      }
+    }
+  };
+
+    const textFields = (
+        <div className="text-center">
+
+            <Form.Group controlId="task_name">
+                <Form.Label>Task name</Form.Label>
+                <Form.Control type="text" name="task_name" value={task_name} onChange={handleChange}/>
             </Form.Group>
-            <div className="d-md-none">{textFields}</div>
-          </Container>
-        </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{textFields}</Container>
-        </Col>
-      </Row>
-    </Form>
-  );
+            <Form.Group controlId="description">
+                <Form.Label>Description</Form.Label>
+                <Form.Control type="text" name="description" value={description} onChange={handleChange}/>
+            </Form.Group>
+            <Form.Group controlId="assignees">
+                <Form.Label>Assignees</Form.Label>
+                <Form.Control type="text" name="assignees" value={assignees} onChange={handleChange}/>
+            </Form.Group>
+            <Form.Group controlId="project">
+                <Form.Label>Project</Form.Label>
+                <Form.Control type="text" name="project" value={project} onChange={handleChange}/>
+            </Form.Group>
+            <Form.Group controlId="status">
+                <Form.Label>Status</Form.Label>
+                <Form.Control type="text" name="status" value={status} onChange={handleChange}/>
+            </Form.Group>
+            <Form.Group controlId="attachment">
+                <Form.Label>attachment</Form.Label>
+                <Form.Control type="text" name="attachment" value={attachment} onChange={handleChange}/>
+            </Form.Group>
+            <br></br>
+            <Button
+                className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                onClick={() => { }}
+            >
+                cancel
+            </Button>
+            <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+                create
+            </Button>
+        </div>
+    );
+
+    return (
+        <Form>
+            <Row>
+                <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+                    <Container
+                        className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+                    >
+                        <Form.Group className="text-center">
+
+                            <Form.Label
+                                className="d-flex justify-content-center"
+                                htmlFor="image-upload"
+                            >
+                                Upload your file attachment
+                            </Form.Label>
+
+                        </Form.Group>
+                        <div className="d-md-none">{textFields}</div>
+                    </Container>
+                </Col>
+                <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
+                    <Container className={appStyles.Content}>{textFields}</Container>
+                </Col>
+            </Row>
+        </Form>
+    );
 }
 
 export default TaskForm;
