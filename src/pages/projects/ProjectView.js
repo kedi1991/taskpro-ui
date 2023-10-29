@@ -7,22 +7,20 @@ import Container from "react-bootstrap/Container";
 import appStyles from "../../App.module.css";
 import axios from "axios";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import Task from "./Task";
+import Project from "./Project";
 
-function TaskView() {
+function ProjectView() {
   const { id } = useParams();
-  const [task, setTask] = useState({ results: [] });
+  const [project, setProject] = useState({ results: [] });
 
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: task }] = await Promise.all([
-          axios.get(`/tasks/${id}`),
+        const [{ data: project }] = await Promise.all([
+          axios.get(`/projects/${id}`),
         ]);
-        setTask({ results: [task] });
-        console.log(task);
+        setProject({ results: [project] });
       } catch (err) {
-        //just for testing
         console.log(err);
       }
     };
@@ -34,16 +32,16 @@ function TaskView() {
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <p>Task for mobile</p>
-        <Task {...task.results[0]} setTask={setTask} TaskView />
+        <Project {...project.results[0]} setProject={setProject} ProjectView />
         <Container className={appStyles.Content}>
           Comments
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        Task for desktop
+        Project for desktop
       </Col>
     </Row>
   );
 }
 
-export default TaskView;
+export default ProjectView;

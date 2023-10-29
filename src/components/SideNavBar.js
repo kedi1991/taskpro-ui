@@ -25,16 +25,10 @@ function SideNavBar() {
     }
   };
 
-  /*
-  const addPostIcon = (
-    <a href='/addpost'>add post</a>
-  );
-  */
-
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Launch
+        Show Navigation bar
       </Button>
 
       <Offcanvas show={show} onHide={handleClose}>
@@ -48,8 +42,8 @@ function SideNavBar() {
               <Accordion.Body>
                 <a href='#'>View tasks</a><br/>
                 <a href='/task/create'>Add task</a><br/>
-                <a href='#'>Delete task</a><br/>
-                <a href='#'>Edit task</a><br/>
+                <a href='/tasks/delete/:id'>Delete task</a><br/>
+                <a href='/tasks/edit/:id'>Edit task</a><br/>
 
               </Accordion.Body>
             </Accordion.Item>
@@ -67,7 +61,7 @@ function SideNavBar() {
             <a href='/register'>Register</a>
             <br></br>
             <a href='/' onClick={handleSignOut}>sign out</a>
-            {activeUser? <h1>{activeUser.username}</h1> : <h1>outside</h1>}
+            {activeUser? <h1>{activeUser.username}</h1> : <h1>Not logged in</h1>}
 
          
           </Accordion>
