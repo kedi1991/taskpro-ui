@@ -7,7 +7,8 @@ TaskPRO is a task management app built using the Django framework. Using this ap
 1. Simple user interface
 2. User manual
 3. Authentication and authorization
-4. 
+4. Create Projects
+5. Create Tasks
 
 **User stories**
 
@@ -45,11 +46,18 @@ TaskPRO is a task management app built using the Django framework. Using this ap
 
 
 **Libraries used**
-1. xxxx
-2. gggg
-3.bbbb
-
+1. react-bootstrap
+2. axios
 
 **Evolution of the UI**
 
+
+**Future improvements**
+1. Add drop down lists to select users and projects
+2. Add ability to assign tasks
+3. Improve the README file
+4. Add more CSS to the files
+
 **Thanks to**
+1. CI Slack community
+2. Code institute tutors and mentors
