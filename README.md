@@ -51,12 +51,26 @@ TaskPRO is a task management app built using the Django framework. Using this ap
 
 **Evolution of the UI**
 
+**Home page**
+![Home page](https://res.cloudinary.com/dr7uvhdmd/image/upload/v1698550264/taskpro/home_page_c46j8p.jpg)
+
+**Side navigation bar**
+![Side nav](https://res.cloudinary.com/dr7uvhdmd/image/upload/v1698550264/taskpro/side_nav_b7sbb3.jpg)
+
+**Add task view**
+![Add task](https://res.cloudinary.com/dr7uvhdmd/image/upload/v1698550264/taskpro/add_task_jew9hp.jpg)
+
+**Add project view**
+![Add project](https://res.cloudinary.com/dr7uvhdmd/image/upload/v1698550264/taskpro/add_project_ferulr.jpg)
 
 **Future improvements**
 1. Add drop down lists to select users and projects
 2. Add ability to assign tasks
 3. Improve the README file
 4. Add more CSS to the files
+
+**Known issue**
+1. Login to the deoployed app in heroku results in a blank page. The login functionality works as designed when deoployed on gitpod
 
 **Thanks to**
 1. CI Slack community
