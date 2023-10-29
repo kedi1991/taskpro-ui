@@ -40,7 +40,6 @@ function SideNavBar() {
             <Accordion.Item eventKey="0">
               <Accordion.Header>TASKS</Accordion.Header>
               <Accordion.Body>
-                <a href='#'>View tasks</a><br/>
                 <a href='/task/create'>Add task</a><br/>
                 <a href='/tasks/delete/:id'>Delete task</a><br/>
                 <a href='/tasks/edit/:id'>Edit task</a><br/>
@@ -50,9 +49,9 @@ function SideNavBar() {
             <Accordion.Item eventKey="1">
               <Accordion.Header>PROJECTS</Accordion.Header>
               <Accordion.Body>
-                <a href='#'>Create project</a><br/>
-                <a href='#'>Edit project</a><br/>
-                <a href='#'>View projects</a><br/>
+                <a href='/project/create'>Create project</a><br/>
+                <a href='/projects/edit/:id'>Edit project</a><br/>
+                <a href='/projects/delete/:id'>Delete projects</a><br/>
               </Accordion.Body>
             </Accordion.Item>
             <br></br>

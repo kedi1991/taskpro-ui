@@ -16,12 +16,6 @@ const Project = (props) => {
     return (
         <Card className={styles.Project}>
             <Card.Body>
-                
-            </Card.Body>
-            <Link to={`/task/${id}`}>
-                <Card.Img src={attachment} alt={project_name} />
-            </Link>
-            <Card.Body>
                 {project_name && <Card.Title className="text-center">{project_name}</Card.Title>}
                 
             </Card.Body>
@@ -29,4 +23,4 @@ const Project = (props) => {
     );
 };
 
-export default Task;
+export default Project;

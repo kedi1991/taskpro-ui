@@ -23,10 +23,10 @@ function ProjectForm() {
         project_name: "",
 
     });
-    const { project_name } = taskData;
+    const { project_name } = projectData;
 
     const handleChange = (event) => {
-        setTaskData({
+        setProjectData({
             ...projectData,
             [event.target.name]: event.target.value,
         });
@@ -36,7 +36,7 @@ function ProjectForm() {
         event.preventDefault();
         const formData = new FormData();
 
-        formData.append("task_name", project_name);
+        formData.append("project_name", project_name);
 
         try {
 
