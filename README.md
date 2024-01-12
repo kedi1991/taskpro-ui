@@ -51,6 +51,7 @@ TaskPRO is a task management app built using the Django framework. Using this ap
 2. HTML
 3. Javascript
 4. CSS
+5. Ico genrator https://favicon.io/favicon-generator/ 
 
 
 **Libraries used**
