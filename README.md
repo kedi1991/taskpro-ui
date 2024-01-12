@@ -34,6 +34,14 @@ TaskPRO is a task management app built using the Django framework. Using this ap
 
 11. As a new user, I should be able to register in order to user all features of the app
 
+**Wireframes**
+
+![Top navbar](https://res.cloudinary.com/dr7uvhdmd/image/upload/v1705022457/taskpro/wireframes/top_navbar_wireframe_ngbbqm.png)
+
+![Signup page](https://res.cloudinary.com/dr7uvhdmd/image/upload/v1705022457/taskpro/wireframes/signup_wireframe_zm5rxz.png)
+
+![Signin page](https://res.cloudinary.com/dr7uvhdmd/image/upload/v1705022457/taskpro/wireframes/signin_wireframe_x8fcoj.png)
+
 
 **Entity Relationship Diagram**
 
