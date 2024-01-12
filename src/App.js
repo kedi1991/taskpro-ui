@@ -12,6 +12,7 @@ import TaskView from './pages/tasks/TaskView';
 import TasksView from './pages/tasks/TasksView';
 import ProjectForm from './pages/projects/ProjectForm';
 import ProjectView from './pages/projects/ProjectView';
+import TopNavBar from './components/TopNavBar';
 
 export const ActiveUserContext = createContext();
 export const SetActiveUserContext = createContext();
@@ -39,6 +40,9 @@ function App() {
     <ActiveUserContext.Provider value={activeUser}>
       <SetActiveUserContext.Provider value={setActiveUser}>
         <div className="App">
+          <TopNavBar>
+            
+          </TopNavBar>
           <SideNavBar>
           </SideNavBar>
           <Container>
