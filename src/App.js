@@ -58,7 +58,8 @@ function App() {
               <Route exact path="/projects/:id" render={() => <ProjectView></ProjectView>} />
               <Route exact path="/projects/delete/:id" render={() => <h1>Delete the project</h1>} />
               <Route exact path="/projects/edit/:id" render={() => <h1>Edit the project</h1>} />
-              <Route render={() => <p>The gods are wise, but they can't seem to understand your request!</p>} />
+              <Route render={() => 
+              <p>The gods are wise, but they can't seem to understand your request!</p>} />
             </Switch>
           </Container>
         </div >
