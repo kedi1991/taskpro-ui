@@ -4,7 +4,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { ActiveUserContext, SetActiveUserContext, useSetActiveUser } from '../App';
-import styles from "../styles/AuthForms.module.css";
+import styles from "../styles/TopNavBar.module.css";
 import axios from 'axios';
 
 function TopNavBar() {
@@ -28,7 +28,7 @@ function TopNavBar() {
 
   return (
     <>
-      <Navbar className="bg-body-secondary" fixed='top'>
+      <Navbar className={styles.TopNavBar} fixed='top'>
 
         <Container>
           <Nav className="me-auto">
