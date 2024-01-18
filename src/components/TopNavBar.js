@@ -53,13 +53,14 @@ function TopNavBar() {
         Delete project
       </NavDropdown.Item>
     </NavDropdown>
-    <NavDropdown title= "activeUser" id="account-dropdown">
+    <Navbar.Text>
+      Signed in as: 
+    </Navbar.Text>
+    <NavDropdown title= {activeUser?.username} id="account-dropdown">
       <NavDropdown.Item href="/" onClick={handleSignOut}>Sign out</NavDropdown.Item>
       
     </NavDropdown>
-    <Navbar.Text>
-      Signed in as: <a href="#login"></a>
-    </Navbar.Text>
+    
   </>
 
   //Icons to display when logged out
