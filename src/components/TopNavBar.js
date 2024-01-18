@@ -16,6 +16,17 @@ function TopNavBar() {
   const activeUser = useContext(ActiveUserContext)
   const setActiveUser = useSetActiveUser();
 
+  //handle signout
+  
+  const handleSignOut = async () => {
+    try {
+      await axios.post("dj-rest-auth/logout/");
+      setActiveUser(null);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   // Icons to display when logged in
 
   const iconsLoggedIn = <>
@@ -42,7 +53,7 @@ function TopNavBar() {
         Delete project
       </NavDropdown.Item>
     </NavDropdown>
-    <NavDropdown title= {activeUser.username} id="account-dropdown">
+    <NavDropdown title= {activeUser} id="account-dropdown">
       <NavDropdown.Item href="/" onClick={handleSignOut}>Sign out</NavDropdown.Item>
       
     </NavDropdown>
@@ -51,7 +62,7 @@ function TopNavBar() {
     </Navbar.Text>
   </>
 
-  //Incons to display when logged out
+  //Icons to display when logged out
 
   const iconsLoggedOut = <>
     <Navbar.Text>
@@ -62,15 +73,6 @@ function TopNavBar() {
     </Navbar.Text>
 
   </>
-
-  const handleSignOut = async () => {
-    try {
-      await axios.post("dj-rest-auth/logout/");
-      setActiveUser(null);
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   return (
     <>
