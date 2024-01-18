@@ -1,11 +1,11 @@
 import { Container } from 'react-bootstrap';
 import './App.css';
 import SideNavBar from './components/SideNavBar';
-import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
+import { Route, Switch, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import './api/axiosDefaults';
 import RegisterForm from './pages/auth/RegisterForm';
 import SignInForm from './pages/auth/SignInForm';
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 import TaskForm from './pages/tasks/TaskForm';
 import TaskView from './pages/tasks/TaskView';
@@ -13,6 +13,7 @@ import TasksView from './pages/tasks/TasksView';
 import ProjectForm from './pages/projects/ProjectForm';
 import ProjectView from './pages/projects/ProjectView';
 import TopNavBar from './components/TopNavBar';
+import { axiosReq, axiosRes } from './api/axiosDefaults';
 
 export const ActiveUserContext = createContext();
 export const SetActiveUserContext = createContext();
@@ -24,9 +25,10 @@ export const useSetActiveUser = () => useContext(SetActiveUserContext);
 function App() {
 
   const [activeUser, setActiveUser] = useState(null);
+
   const handleMount = async () => {
     try {
-      const { data } = await axios.get("dj-rest-auth/user/");
+      const { data } = await axiosRes.get("dj-rest-auth/user/");
       setActiveUser(data);
     } catch (err) {
       console.log(err);
@@ -36,50 +38,6 @@ function App() {
   useEffect(() => {
     handleMount();
   }, []);
-
-
-  //Interseptors to handle the access token
-  useMemo(() => {
-    axiosReq.interceptors.request.use(
-      async (config) => {
-        try {
-          await axios.post("/dj-rest-auth/token/refresh/");
-        } catch (err) {
-          setCurrentUser((prevCurrentUser) => {
-            if (prevCurrentUser) {
-              history.push("/signin");
-            }
-            return null;
-          });
-          return config;
-        }
-        return config;
-      },
-      (err) => {
-        return Promise.reject(err);
-      }
-    );
-
-    axiosRes.interceptors.response.use(
-      (response) => response,
-      async (err) => {
-        if (err.response?.status === 401) {
-          try {
-            await axios.post("/dj-rest-auth/token/refresh/");
-          } catch (err) {
-            setCurrentUser((prevCurrentUser) => {
-              if (prevCurrentUser) {
-                history.push("/signin");
-              }
-              return null;
-            });
-          }
-          return axios(err.config);
-        }
-        return Promise.reject(err);
-      }
-    );
-  }, [history]);
 
   return (
     <ActiveUserContext.Provider value={activeUser}>
