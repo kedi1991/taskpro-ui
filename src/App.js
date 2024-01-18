@@ -14,6 +14,7 @@ import ProjectForm from './pages/projects/ProjectForm';
 import ProjectView from './pages/projects/ProjectView';
 import TopNavBar from './components/TopNavBar';
 import { axiosReq, axiosRes } from './api/axiosDefaults';
+import styles from './App.module.css'
 
 export const ActiveUserContext = createContext();
 export const SetActiveUserContext = createContext();
@@ -48,7 +49,7 @@ function App() {
           </TopNavBar>
           <SideNavBar>
           </SideNavBar>
-          <Container>
+          <Container className={styles.Main}>
             <Switch>
               <Route exact path="/" render={() => <h1>Welcome to the Task PRO</h1>} />
               <Route exact path="/signin" render={() => <SignInForm></SignInForm>} />
