@@ -53,7 +53,7 @@ function TopNavBar() {
         Delete project
       </NavDropdown.Item>
     </NavDropdown>
-    <NavDropdown title= {activeUser.username} id="account-dropdown">
+    <NavDropdown title= {activeUser} id="account-dropdown">
       <NavDropdown.Item href="/" onClick={handleSignOut}>Sign out</NavDropdown.Item>
       
     </NavDropdown>
