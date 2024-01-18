@@ -17,6 +17,7 @@ import TopNavBar from './components/TopNavBar';
 export const ActiveUserContext = createContext();
 export const SetActiveUserContext = createContext();
 
+//Used to pass down user data throught the application
 export const useActiveUser = () => useContext(ActiveUserContext);
 export const useSetActiveUser = () => useContext(SetActiveUserContext);
 

@@ -16,6 +16,48 @@ function TopNavBar() {
   const activeUser = useContext(ActiveUserContext)
   const setActiveUser = useSetActiveUser();
 
+  // Iccons to display when logged in
+
+  const iconsLoggedIn = <>
+    <NavDropdown title="Tasks" id="basic-nav-dropdown">
+      <NavDropdown.Item href="/tasks">View tasks</NavDropdown.Item>
+      <NavDropdown.Item href="/task/create">
+        Add task
+      </NavDropdown.Item>
+      <NavDropdown.Item href="/task/edit/:id">Edit task</NavDropdown.Item>
+      <NavDropdown.Divider />
+      <NavDropdown.Item href="/task/delete/:id">
+        Delete task
+      </NavDropdown.Item>
+    </NavDropdown>
+
+    <NavDropdown title="Projects" id="basic-nav-dropdown">
+      <NavDropdown.Item href="/projects">View projects</NavDropdown.Item>
+      <NavDropdown.Item href="/project/add">
+        Add project
+      </NavDropdown.Item>
+      <NavDropdown.Item href="/project/edit/:id">Edit project</NavDropdown.Item>
+      <NavDropdown.Divider />
+      <NavDropdown.Item href="/project/delete/:id">
+        Delete project
+      </NavDropdown.Item>
+    </NavDropdown>
+    <Navbar.Text>
+      Signed in as: <a href="#login">Kedi</a>
+    </Navbar.Text>
+  </>
+
+  //Incons to display when logged out
+
+  const iconsLoggedOut = <>
+    <Navbar.Text>
+      <a href="/signin">Sign In</a>
+    </Navbar.Text>
+    <Navbar.Text>
+      <a href="/register">Sign Up</a>
+    </Navbar.Text>
+
+  </>
 
   const handleSignOut = async () => {
     try {
@@ -39,39 +81,9 @@ function TopNavBar() {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Nav className='mr-auto'>
-              <NavDropdown title="Tasks" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/tasks">View tasks</NavDropdown.Item>
-                <NavDropdown.Item href="/task/create">
-                  Add task
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/task/edit/:id">Edit task</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="/task/delete/:id">
-                  Delete task
-                </NavDropdown.Item>
-              </NavDropdown>
-             
-              <NavDropdown title="Projects" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/projects">View projects</NavDropdown.Item>
-                <NavDropdown.Item href="/project/add">
-                  Add project
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/project/edit/:id">Edit project</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="/project/delete/:id">
-                  Delete project
-                </NavDropdown.Item>
-              </NavDropdown>
+              {activeUser ? iconsLoggedIn : iconsLoggedOut}
             </Nav>
-            <Navbar.Text>
-              <a href="/signin">Sign In</a>
-            </Navbar.Text>
-            <Navbar.Text>
-              <a href="/register">Sign Up</a>
-            </Navbar.Text>
-            <Navbar.Text>
-              Signed in as: <a href="#login">Kedi</a>
-            </Navbar.Text>
+
           </Navbar.Collapse>
         </Container>
 
