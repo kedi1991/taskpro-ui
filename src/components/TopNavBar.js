@@ -16,7 +16,7 @@ function TopNavBar() {
   const activeUser = useContext(ActiveUserContext)
   const setActiveUser = useSetActiveUser();
 
-  // Iccons to display when logged in
+  // Icons to display when logged in
 
   const iconsLoggedIn = <>
     <NavDropdown title="Tasks" id="basic-nav-dropdown">
@@ -42,8 +42,12 @@ function TopNavBar() {
         Delete project
       </NavDropdown.Item>
     </NavDropdown>
+    <NavDropdown title= {activeUser.username} id="account-dropdown">
+      <NavDropdown.Item href="/" onClick={handleSignOut}>Sign out</NavDropdown.Item>
+      
+    </NavDropdown>
     <Navbar.Text>
-      Signed in as: <a href="#login">Kedi</a>
+      Signed in as: <a href="#login"></a>
     </Navbar.Text>
   </>
 
