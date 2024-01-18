@@ -14,7 +14,7 @@ import { Link, useHistory } from "react-router-dom";
 import styles from "../../styles/AuthForms.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-import { SetActiveUserContext } from "../../App";
+import { SetActiveUserContext, useSetActiveUser } from "../../App";
 
 function SignInForm() {
   const [signInData, setSignInData] = useState({
@@ -27,7 +27,7 @@ function SignInForm() {
 
   const history = useHistory();
 
-  const setActiveUser = useContext(SetActiveUserContext);
+  const setActiveUser = useSetActiveUser();
 
   const handleSubmit = async (event) => {
     event.preventDefault();

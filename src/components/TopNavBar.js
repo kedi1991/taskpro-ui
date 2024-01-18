@@ -3,7 +3,7 @@ import { Accordion, Container, Nav, NavLink, Navbar } from 'react-bootstrap';
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { ActiveUserContext, SetActiveUserContext, useSetActiveUser } from '../App';
+import { ActiveUserContext, SetActiveUserContext, useActiveUser, useSetActiveUser } from '../App';
 import styles from "../styles/TopNavBar.module.css";
 import axios from 'axios';
 
@@ -13,7 +13,7 @@ function TopNavBar() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const activeUser = useContext(ActiveUserContext)
+  const activeUser = useActiveUser()
   const setActiveUser = useSetActiveUser();
 
   //handle signout
