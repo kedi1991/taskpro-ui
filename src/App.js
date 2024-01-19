@@ -14,6 +14,8 @@ import ProjectView from './pages/projects/ProjectView';
 import TopNavBar from './components/TopNavBar';
 import { axiosReq, axiosRes } from './api/axiosDefaults';
 import styles from './App.module.css'
+import Tasks from './pages/tasks/Tasks';
+import Projects from './pages/projects/Projects';
 
 export const ActiveUserContext = createContext();
 export const SetActiveUserContext = createContext();
@@ -30,12 +32,13 @@ function App() {
               <Route exact path="/" render={() => <h1>Welcome to the Task PRO</h1>} />
               <Route exact path="/signin" render={() => <SignInForm></SignInForm>} />
               <Route exact path="/register" render={() => <RegisterForm></RegisterForm>} />
-              <Route exact path="/tasks/" render={() => <h1>Display all tasks</h1>} />
+              <Route exact path="/tasks/" render={() => <Tasks></Tasks>} />
               <Route exact path="/task/create" render={() => <TaskForm></TaskForm>} />
               <Route exact path="/tasks/:id" render={() => <TaskView></TaskView>} />
               <Route exact path="/tasks/delete/:id" render={() => <h1>Delete the task</h1>} />
               <Route exact path="/tasks/edit/:id" render={() => <h1>Edit the task</h1>} />
               <Route exact path="/project/create" render={() => <ProjectForm></ProjectForm>} />
+              <Route exact path="/projects/" render={() => <Projects></Projects>} />
               <Route exact path="/projects/:id" render={() => <ProjectView></ProjectView>} />
               <Route exact path="/projects/delete/:id" render={() => <h1>Delete the project</h1>} />
               <Route exact path="/projects/edit/:id" render={() => <h1>Edit the project</h1>} />
