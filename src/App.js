@@ -1,6 +1,5 @@
 import { Container } from 'react-bootstrap';
 import './App.css';
-import SideNavBar from './components/SideNavBar';
 import { Route, Switch, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import './api/axiosDefaults';
 import RegisterForm from './pages/auth/RegisterForm';
@@ -19,41 +18,19 @@ import styles from './App.module.css'
 export const ActiveUserContext = createContext();
 export const SetActiveUserContext = createContext();
 
-//Used to pass down user data throught the application
-export const useActiveUser = () => useContext(ActiveUserContext);
-export const useSetActiveUser = () => useContext(SetActiveUserContext);
-
 function App() {
 
-  const [activeUser, setActiveUser] = useState(null);
-
-  const handleMount = async () => {
-    try {
-      const { data } = await axiosRes.get("dj-rest-auth/user/");
-      setActiveUser(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    handleMount();
-  }, []);
-
   return (
-    <ActiveUserContext.Provider value={activeUser}>
-      <SetActiveUserContext.Provider value={setActiveUser}>
-        <div className="App">
+   
+        <div className={styles.App}>
           <TopNavBar>
-            
           </TopNavBar>
-          <SideNavBar>
-          </SideNavBar>
           <Container className={styles.Main}>
             <Switch>
               <Route exact path="/" render={() => <h1>Welcome to the Task PRO</h1>} />
               <Route exact path="/signin" render={() => <SignInForm></SignInForm>} />
               <Route exact path="/register" render={() => <RegisterForm></RegisterForm>} />
+              <Route exact path="/tasks/" render={() => <h1>Display all tasks</h1>} />
               <Route exact path="/task/create" render={() => <TaskForm></TaskForm>} />
               <Route exact path="/tasks/:id" render={() => <TaskView></TaskView>} />
               <Route exact path="/tasks/delete/:id" render={() => <h1>Delete the task</h1>} />
@@ -67,8 +44,7 @@ function App() {
             </Switch>
           </Container>
         </div >
-      </SetActiveUserContext.Provider>
-    </ActiveUserContext.Provider>
+
   );
 }
 

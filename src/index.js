@@ -4,19 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
-import { ActiveUserProvider } from './contexts/ActiveUserContexts';
+import { ActiveUserProvider } from './contexts/ActiveUserContext';
 
 ReactDOM.render(
-  
+
   <React.StrictMode>
     <Router>
       <ActiveUserProvider>
-      <App />
+        <App />
       </ActiveUserProvider>
-      
+
     </Router>
   </React.StrictMode>,
-  
+
   document.getElementById('root')
 );
 

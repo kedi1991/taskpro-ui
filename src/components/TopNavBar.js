@@ -1,23 +1,15 @@
-import { useContext, useState } from 'react';
-import { Accordion, Container, Nav, NavLink, Navbar } from 'react-bootstrap';
+import { Container, Nav, NavLink, Navbar } from 'react-bootstrap';
 import NavDropdown from 'react-bootstrap/NavDropdown'
-import Button from 'react-bootstrap/Button';
-import Offcanvas from 'react-bootstrap/Offcanvas';
-import { ActiveUserContext, SetActiveUserContext, useActiveUser, useSetActiveUser } from '../App';
 import styles from "../styles/TopNavBar.module.css";
 import axios from 'axios';
+import { useActiveUser, useSetActiveUser } from '../contexts/ActiveUserContext';
 
-function TopNavBar() {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+const TopNavBar = () => {
 
   const activeUser = useActiveUser()
-  const setActiveUser = useSetActiveUser();
+  const setActiveUser = useSetActiveUser()
 
   //handle signout
-  
   const handleSignOut = async () => {
     try {
       await axios.post("dj-rest-auth/logout/");
