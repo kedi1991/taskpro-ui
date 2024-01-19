@@ -43,9 +43,6 @@ TaskPRO is a task management app built using the Django framework. Using this ap
 ![Signin page](https://res.cloudinary.com/dr7uvhdmd/image/upload/v1705022457/taskpro/wireframes/signin_wireframe_x8fcoj.png)
 
 
-**Entity Relationship Diagram**
-
-
 **Technologies used**
 1. Django REST framework
 2. HTML
@@ -60,6 +57,20 @@ TaskPRO is a task management app built using the Django framework. Using this ap
 
 **Evolution of the UI**
 
+**Home page design**
+![Page design](https://res.cloudinary.com/dr7uvhdmd/image/upload/v1705632445/taskpro/page_area_wireframe_adryuw.png)
+
+**Sign in form design**
+![Login page](https://res.cloudinary.com/dr7uvhdmd/image/upload/v1705632444/taskpro/signin_wireframe_cunai8.png)
+
+**Sign up form design**
+![Sign up page](https://res.cloudinary.com/dr7uvhdmd/image/upload/v1705632444/taskpro/signup_wireframe_rssaam.png)
+
+**Top navbar design**
+![Top nav bar design](https://res.cloudinary.com/dr7uvhdmd/image/upload/v1705632444/taskpro/top_navbar_wireframe_hvggy8.png)
+
+
+**After making improvements for the resubmission**
 **Home page**
 ![Home page](https://res.cloudinary.com/dr7uvhdmd/image/upload/v1698550264/taskpro/home_page_c46j8p.jpg)
 
@@ -72,6 +83,13 @@ TaskPRO is a task management app built using the Django framework. Using this ap
 **Add project view**
 ![Add project](https://res.cloudinary.com/dr7uvhdmd/image/upload/v1698550264/taskpro/add_project_ferulr.jpg)
 
+
+**Home page**
+![Home page](https://res.cloudinary.com/dr7uvhdmd/image/upload/v1705632444/taskpro/new_top_nav_xj0vb6.png)
+
+**Sign up page**
+![Side nav](https://res.cloudinary.com/dr7uvhdmd/image/upload/v1705632444/taskpro/sing_up_new_lstc2q.png)
+
 **Future improvements**
 1. Add drop down lists to select users and projects
 2. Add ability to assign tasks
@@ -79,7 +97,8 @@ TaskPRO is a task management app built using the Django framework. Using this ap
 4. Add more CSS to the files
 
 **Known issue**
-1. Login to the deoployed app in heroku results in a blank page. The login functionality works as designed when deoployed on gitpod
+1. Login to the app does nt maintain the session due to error in refreshing the access token
+2. CRUD fucntionality not implemented because of this error
 
 **Thanks to**
 1. CI Slack community
