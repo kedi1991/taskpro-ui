@@ -33,7 +33,7 @@ function SignInForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
+    try { 
       const {data} = await axios.post("/dj-rest-auth/login/", signInData);
       //Set current user data to be accessed in the Nav bar to show the logged in user
       setActiveUser(data.user)
