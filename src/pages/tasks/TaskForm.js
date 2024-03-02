@@ -74,7 +74,12 @@ function TaskForm() {
             </Form.Group>
             <Form.Group controlId="assignees">
                 <Form.Label>Assignees</Form.Label>
-                <Form.Control type="text" name="assignees" value={assignees} onChange={handleChange} />
+                <Form.Control as="select" value={selectedUser} name="assignees" onChange={(e) => setSelectedUser(e.target.value)}>
+                    <option value="">Select...</option>
+                        {data.map(user => (
+                    <option key={user.id} value={user.owner}>{user.owner}</option>
+                ))}
+                </Form.Control>
             </Form.Group>
             <Form.Group controlId="project">
                 <Form.Label>Project</Form.Label>
