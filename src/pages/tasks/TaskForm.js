@@ -105,7 +105,7 @@ function TaskForm() {
                 <Form.Control as="select" value={selectedUser} name="assignees" onChange={(e) => setSelectedUser(e.target.value)}>
                     <option value="">Select...</option>
                         {data.map(user => (
-                    <option key={user.id} value={user.owner}>{user.owner}</option>
+                    <option key={user.id} value={user.id}>{user.owner}</option>
                 ))}
                 </Form.Control>
             </Form.Group>
@@ -114,7 +114,7 @@ function TaskForm() {
                 <Form.Control as="select" value={selectedProject} name="project" onChange={(e) => setSelectedProject(e.target.value)}>
                     <option value="">Select...</option>
                         {projects.map(project => (
-                    <option key={project.id} value={project.project_name}>{project.project_name}</option>
+                    <option key={project.id} value={project.id}>{project.project_name}</option>
                 ))}
                 </Form.Control>
             </Form.Group>
