@@ -34,6 +34,13 @@ function TaskForm() {
         setSelectedUser(event.target.value); // Update the selected user ID in state
     };
 
+    const [selectedStatus, setSelectedStatus] = useState(''); // State to hold the selected user ID
+
+    // Event handler to handle select change
+    const handleSelectStatus = (event) => {
+        setSelectedStatus(event.target.value); // Update the selected user ID in state
+    };
+
     // Event handler to handle select change
     const handleProjectSelectChange = (event) => {
         setSelectedProject(event.target.value); // Update the selected user ID in state
@@ -66,7 +73,7 @@ function TaskForm() {
         formData.append("assignees", selectedUser);
         formData.append("project", selectedProject);
         formData.append("description", description);
-        formData.append("status", status);
+        formData.append("status", selectedStatus);
         formData.append("attachment", attachment);
 
         try {
@@ -111,10 +118,14 @@ function TaskForm() {
                 ))}
                 </Form.Control>
             </Form.Group>
-            
             <Form.Group controlId="status">
                 <Form.Label>Status</Form.Label>
-                <Form.Control type="text" name="status" value={status} onChange={handleChange} />
+                <Form.Control as="select" value={selectedStatus} name="status" onChange={(e) => setSelectedStatus(e.target.value)}>
+                    <option key={project.id} value='0'>Pending</option>
+                    <option key={project.id} value='1'>Executing</option>
+                    <option key={project.id} value='2'>Completed</option>
+                    <option key={project.id} value='3'>Blocked</option>
+                </Form.Control>
             </Form.Group>
             <Form.Group controlId="attachment">
                 <Form.Label>attachment</Form.Label>
