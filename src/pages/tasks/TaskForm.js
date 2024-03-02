@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 
 import Upload from "../../assets/upload.png";
+import useRegisteredUsers from "../../hooks/useRegisteredUsers";
 
 import styles from "../../styles/TaskForm.module.css";
 import appStyles from "../../App.module.css";
@@ -18,6 +19,16 @@ function TaskForm() {
 
     const [errors, setErrors] = useState({});
     const history = useHistory();
+    
+    // Use the custom hook to get the selected value
+    const {data, loading} = useRegisteredUsers();
+
+    const [selectedUser, setSelectedUser] = useState(''); // State to hold the selected user ID
+
+        // Event handler to handle select change
+        const handleSelectChange = (event) => {
+            setSelectedUser(event.target.value); // Update the selected user ID in state
+        };
 
     const [taskData, setTaskData] = useState({
         task_name: "",
@@ -42,7 +53,7 @@ function TaskForm() {
 
         formData.append("task_name", task_name);
         formData.append("description", description);
-        formData.append("assignees", assignees);
+        formData.append("assignees", selectedUser);
         formData.append("project", project);
         formData.append("description", description);
         formData.append("status", status);
