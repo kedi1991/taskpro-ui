@@ -14,6 +14,7 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import useProjects from "../../hooks/useProjects";
 
 function TaskForm() {
 
@@ -23,12 +24,21 @@ function TaskForm() {
     // Use the custom hook to get the selected value
     const {data, loading} = useRegisteredUsers();
 
+    const { projects } = useProjects()
+    const [selectedProject, setSelectedProject] = useState("")
+
     const [selectedUser, setSelectedUser] = useState(''); // State to hold the selected user ID
 
-        // Event handler to handle select change
-        const handleSelectChange = (event) => {
-            setSelectedUser(event.target.value); // Update the selected user ID in state
-        };
+    // Event handler to handle select change
+    const handleSelectChange = (event) => {
+        setSelectedUser(event.target.value); // Update the selected user ID in state
+    };
+
+    // Event handler to handle select change
+    const handleProjectSelectChange = (event) => {
+        setSelectedProject(event.target.value); // Update the selected user ID in state
+    };
+
 
     const [taskData, setTaskData] = useState({
         task_name: "",
@@ -54,7 +64,7 @@ function TaskForm() {
         formData.append("task_name", task_name);
         formData.append("description", description);
         formData.append("assignees", selectedUser);
-        formData.append("project", project);
+        formData.append("project", selectedProject);
         formData.append("description", description);
         formData.append("status", status);
         formData.append("attachment", attachment);
@@ -94,8 +104,14 @@ function TaskForm() {
             </Form.Group>
             <Form.Group controlId="project">
                 <Form.Label>Project</Form.Label>
-                <Form.Control type="text" name="project" value={project} onChange={handleChange} />
+                <Form.Control as="select" value={selectedProject} name="project" onChange={(e) => setSelectedProject(e.target.value)}>
+                    <option value="">Select...</option>
+                        {projects.map(project => (
+                    <option key={project.id} value={project.project_name}>{project.project_name}</option>
+                ))}
+                </Form.Control>
             </Form.Group>
+            
             <Form.Group controlId="status">
                 <Form.Label>Status</Form.Label>
                 <Form.Control type="text" name="status" value={status} onChange={handleChange} />
