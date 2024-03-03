@@ -24,26 +24,21 @@ const TopNavBar = () => {
   const iconsLoggedIn = <>
     <NavDropdown title="Tasks" id="basic-nav-dropdown">
       <NavDropdown.Item href="/tasks">View tasks</NavDropdown.Item>
+      <NavDropdown.Divider />
       <NavDropdown.Item href="/task/create">
         Add task
       </NavDropdown.Item>
-      <NavDropdown.Item href="/tasks/edit/:id">Edit task</NavDropdown.Item>
-      <NavDropdown.Divider />
-      <NavDropdown.Item href="/tasks/delete/:id">
-        Delete task
-      </NavDropdown.Item>
+      
     </NavDropdown>
 
     <NavDropdown title="Projects" id="basic-nav-dropdown">
       <NavDropdown.Item href="/projects">View projects</NavDropdown.Item>
+      <NavDropdown.Divider />
       <NavDropdown.Item href="/project/add">
         Add project
       </NavDropdown.Item>
-      <NavDropdown.Item href="/project/edit/:id">Edit project</NavDropdown.Item>
-      <NavDropdown.Divider />
-      <NavDropdown.Item href="/project/delete/:id">
-        Delete project
-      </NavDropdown.Item>
+     
+      
     </NavDropdown>
     <Navbar.Text>
       Signed in as: 
