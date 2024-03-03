@@ -3,12 +3,14 @@ import axios from 'axios';
 import Task from './Task';
 import TaskView from './TaskView';
 import { Button, Card } from "react-bootstrap";
+import { useHistory } from 'react-router-dom';
 
 
 function TasksPage() {
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState('');
   const [loading, setLoading] = useState(true);
+  const history = useHistory(); // Retrieve history object
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -33,7 +35,8 @@ function TasksPage() {
     try {
       await axios.delete(`/tasks/${taskId}`);
       alert("Task successfully deleted")
-      //setTasks(tasks.filter(task => task.id !== taskId));
+            // Refresh the page after deletion
+            window.location.reload();
     } catch (error) {
       console.error('Error deleting task:', error);
       alert("You cannot delete another user's tasks")
