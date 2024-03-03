@@ -6,7 +6,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 
-import Upload from "../../assets/upload.png";
 import useRegisteredUsers from "../../hooks/useRegisteredUsers";
 
 import styles from "../../styles/TaskForm.module.css";
@@ -15,14 +14,15 @@ import btnStyles from "../../styles/Button.module.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import useProjects from "../../hooks/useProjects";
+import { Image } from "react-bootstrap";
 
 function TaskForm() {
 
     const [errors, setErrors] = useState({});
     const history = useHistory();
-    
+
     // Use the custom hook to get the selected value
-    const {data, loading} = useRegisteredUsers();
+    const { data, loading } = useRegisteredUsers();
 
     const { projects } = useProjects()
     const [selectedProject, setSelectedProject] = useState("")
@@ -74,7 +74,6 @@ function TaskForm() {
         formData.append("project", selectedProject);
         formData.append("description", description);
         formData.append("status", selectedStatus);
-        formData.append("attachment", attachment);
 
         try {
 
@@ -104,18 +103,18 @@ function TaskForm() {
                 <Form.Label>Assignees</Form.Label>
                 <Form.Control as="select" value={selectedUser} name="assignees" onChange={(e) => setSelectedUser(e.target.value)}>
                     <option value="">Select...</option>
-                        {data.map(user => (
-                    <option key={user.id} value={user.id}>{user.owner}</option>
-                ))}
+                    {data.map(user => (
+                        <option key={user.id} value={user.id}>{user.owner}</option>
+                    ))}
                 </Form.Control>
             </Form.Group>
             <Form.Group controlId="project">
                 <Form.Label>Project</Form.Label>
                 <Form.Control as="select" value={selectedProject} name="project" onChange={(e) => setSelectedProject(e.target.value)}>
                     <option value="">Select...</option>
-                        {projects.map(project => (
-                    <option key={project.id} value={project.id}>{project.project_name}</option>
-                ))}
+                    {projects.map(project => (
+                        <option key={project.id} value={project.id}>{project.project_name}</option>
+                    ))}
                 </Form.Control>
             </Form.Group>
             <Form.Group controlId="status">
@@ -126,10 +125,6 @@ function TaskForm() {
                     <option key={project.id} value='2'>Completed</option>
                     <option key={project.id} value='3'>Blocked</option>
                 </Form.Control>
-            </Form.Group>
-            <Form.Group controlId="attachment">
-                <Form.Label>attachment</Form.Label>
-                <Form.Control type="text" name="attachment" value={attachment} onChange={handleChange} />
             </Form.Group>
             <br></br>
             <Button
@@ -148,21 +143,15 @@ function TaskForm() {
         <Form onSubmit={handleSubmit}>
             <Row>
                 <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-                    <Container
-                        className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+                    <Col
+                        md={6}
+                        className={`my-auto d-none d-md-block p-2 ${styles.SignUpCol}`}
                     >
-                        <Form.Group className="text-center">
-
-                            <Form.Label
-                                className="d-flex justify-content-center"
-                                htmlFor="image-upload"
-                            >
-                                Upload your file attachment
-                            </Form.Label>
-
-                        </Form.Group>
-                        <div className="d-md-none">{otherFields}</div>
-                    </Container>
+                        <Image
+                            className={`${appStyles.FillerImage}`}
+                            src={"https://res.cloudinary.com/dr7uvhdmd/image/upload/v1698279794/taskpro/taskmgmt_image_krhumz.png"}
+                        />
+                    </Col>
                 </Col>
                 <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
                     <Container className={appStyles.Content}>{otherFields}</Container>
