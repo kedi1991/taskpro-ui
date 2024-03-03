@@ -15,10 +15,15 @@ import Projects from './pages/projects/Projects';
 import { Route, Switch } from 'react-router-dom/cjs/react-router-dom';
 import TasksPage from './pages/tasks/TasksPage';
 
+import { useActiveUser } from './contexts/ActiveUserContext';
+
 export const ActiveUserContext = createContext();
 export const SetActiveUserContext = createContext();
 
 function App() {
+
+  const activeUser = useActiveUser();
+  const profile_id = activeUser?.profile_id || ""
 
   return (
    
@@ -30,7 +35,7 @@ function App() {
               <Route exact path="/" render={() => <h1>Welcome to the Task PRO</h1>} />
               <Route exact path="/signin" render={() => <SignInForm></SignInForm>} />
               <Route exact path="/register" render={() => <RegisterForm></RegisterForm>} />
-              <Route exact path="/tasks/" render={() => <TasksPage></TasksPage>} />
+              <Route exact path="/tasks/" render={() => <TasksPage message="No tasks found with the used criteria." filter={`owner__profile=${profile_id}&`}></TasksPage>} />
               <Route exact path="/task/create" render={() => <TaskForm></TaskForm>} />
               <Route exact path="/tasks/:id" render={() => <TaskView></TaskView>} />
               <Route exact path="/tasks/delete/:id" render={() => <h1>Delete the task</h1>} />

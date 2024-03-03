@@ -7,7 +7,7 @@ import Container from "react-bootstrap/Container";
 
 import appStyles from "../../App.module.css";
 
-function  TasksPage() {
+function  TasksPage({message, filter =""}) {
   
   return (
     <Row className="h-100">
