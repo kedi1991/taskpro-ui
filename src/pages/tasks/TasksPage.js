@@ -108,9 +108,11 @@ function TasksPage() {
                   Date created: {task.created_at}<br></br>
                   Status: {task.status}<br></br>
                 </Card.Body>
-                <Button onClick={() => handleDeleteClick(task.id)}>Delete</Button>
-                <br></br>
                 <Button onClick={() => handleEditClick(task)}>Edit</Button>
+                <br></br>
+                <Button variant="danger" onClick={() => handleDeleteClick(task.id)}>Delete</Button>
+                
+                
 
 
               </Card>
