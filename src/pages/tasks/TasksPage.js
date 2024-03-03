@@ -72,7 +72,7 @@ function TasksPage() {
 
   const handleEditSubmit = async () => {
     try {
-      await axios.put(`/tasks/${editedTask.id}`, editedTask);
+      await axios.put(`/tasks/${editedTask.id}/`, editedTask);
       setShowEditModal(false);
       // Refresh the page and alert
       alert("Task successfully updated")
