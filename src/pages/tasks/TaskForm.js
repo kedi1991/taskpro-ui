@@ -78,7 +78,8 @@ function TaskForm() {
         try {
 
             const { data } = await axios.post("/tasks/", formData);
-            history.push(`/tasks/${data.id}`);
+            alert("New task successfully created")
+            history.push(`/tasks/`);
 
         } catch (err) {
             console.log(err);

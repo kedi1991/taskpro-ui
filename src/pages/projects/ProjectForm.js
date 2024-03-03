@@ -13,6 +13,7 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Image } from "react-bootstrap";
 
 function ProjectForm() {
 
@@ -41,7 +42,10 @@ function ProjectForm() {
         try {
 
             const { data } = await axios.post("/projects/", formData);
-            history.push(`/projects/${data.id}`);
+            alert("Project successfully craeted")
+            history.push(`/projects/`);
+
+
 
         } catch (err) {
             console.log(err);
@@ -78,6 +82,17 @@ function ProjectForm() {
 
                 <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
                     <Container className={appStyles.Content}>{otherFields}</Container>
+                </Col>
+                <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+                    <Col
+                        md={6}
+                        className={`my-auto d-none d-md-block p-2 ${styles.SignUpCol}`}
+                    >
+                        <Image
+                            className={`${appStyles.FillerImage}`}
+                            src={"https://res.cloudinary.com/dr7uvhdmd/image/upload/v1698279794/taskpro/taskmgmt_image_krhumz.png"}
+                        />
+                    </Col>
                 </Col>
             </Row>
         </Form>
