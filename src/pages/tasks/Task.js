@@ -21,12 +21,7 @@ const Task = (props) => {
 
     return (
         <Card className={styles.Post}>
-            <Card.Body>
-                
-            </Card.Body>
-            <Link to={`/task/${id}`}>
-                <Card.Img src={attachment} alt={task_name} />
-            </Link>
+            
             <Card.Body>
                 {task_name && <Card.Title className="text-center">{task_name}</Card.Title>}
                 {description && <Card.Text>{description}</Card.Text>}
