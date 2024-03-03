@@ -16,6 +16,7 @@ import { Route, Switch } from 'react-router-dom/cjs/react-router-dom';
 import TasksPage from './pages/tasks/TasksPage';
 
 import { useActiveUser } from './contexts/ActiveUserContext';
+import ProjectsPage from './pages/projects/ProjectsPage';
 
 export const ActiveUserContext = createContext();
 export const SetActiveUserContext = createContext();
@@ -41,7 +42,7 @@ function App() {
               <Route exact path="/tasks/delete/:id" render={() => <h1>Delete the task</h1>} />
               <Route exact path="/tasks/edit/:id" render={() => <h1>Edit the task</h1>} />
               <Route exact path="/project/add" render={() => <ProjectForm></ProjectForm>} />
-              <Route exact path="/projects/" render={() => <Projects></Projects>} />
+              <Route exact path="/projects/" render={() => <ProjectsPage></ProjectsPage>} />
               <Route exact path="/projects/:id" render={() => <ProjectView></ProjectView>} />
               <Route exact path="/projects/delete/:id" render={() => <h1>Delete the project</h1>} />
               <Route exact path="/projects/edit/:id" render={() => <h1>Edit the project</h1>} />
