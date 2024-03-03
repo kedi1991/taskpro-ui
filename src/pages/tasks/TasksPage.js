@@ -45,18 +45,15 @@ function TasksPage() {
           {tasks.map((task) => (
             <>
               <Card>
-          
                   <Card.Body>
                       <Card.Title className="text-center">{task.task_name}</Card.Title>
                       <Card.Text>{task.description}</Card.Text>
                       Owner: {task.owner}<br></br>
                       Date created: {task.created_at}<br></br>
                       Status: {task.status}<br></br>
-                      
                   </Card.Body>
               </Card>
             </>
-            // <li key={item.id}>{item.task_name}</li>
           ))}
         </ul>
       )}
