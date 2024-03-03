@@ -13,7 +13,7 @@ function ProjectsPage() {
     id: '',
     project_name: '',
     owner: '',
-    updated_at: '',
+    created_at: ''
   });
 
   useEffect(() => {
@@ -49,8 +49,8 @@ function ProjectsPage() {
   };
 
   //Edit functionality
-  const handleEditClick = (task) => {
-    setEditedProject(projects);
+  const handleEditClick = (project) => {
+    setEditedProject(project);
     setShowEditModal(true);
   };
 
