@@ -27,7 +27,7 @@ const TopNavBar = () => {
       <NavDropdown.Item href="/task/create">
         Add task
       </NavDropdown.Item>
-      <NavDropdown.Item href="/task/edit/:id">Edit task</NavDropdown.Item>
+      <NavDropdown.Item href="/tasks/edit/:id">Edit task</NavDropdown.Item>
       <NavDropdown.Divider />
       <NavDropdown.Item href="/task/delete/:id">
         Delete task
