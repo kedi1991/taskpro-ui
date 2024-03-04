@@ -83,6 +83,8 @@ function TaskForm() {
 
         } catch (err) {
             console.log(err);
+            alert("An error occurred: " + JSON.stringify(err.response?.data));
+
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data);
             }

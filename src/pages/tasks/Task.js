@@ -1,22 +1,17 @@
 import React from "react";
 import styles from "../../styles/TaskForm.module.css";
-import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import TaskView from "./TaskView";
+import { Card } from "react-bootstrap";
+
 
 const Task = (props) => {
     const {
-        id,
-        owner,
-        created_at,
-        updated_at,
         task_name,
         description,
         assignees,
         project,
         status,
         attachment,
-        is_owner,
+
     } = props;
 
     return (

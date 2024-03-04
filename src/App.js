@@ -10,8 +10,7 @@ import ProjectForm from './pages/projects/ProjectForm';
 import ProjectView from './pages/projects/ProjectView';
 import TopNavBar from './components/TopNavBar';
 import styles from './App.module.css'
-import Tasks from './pages/tasks/Tasks';
-import Projects from './pages/projects/Projects';
+
 import { Route, Switch } from 'react-router-dom/cjs/react-router-dom';
 import TasksPage from './pages/tasks/TasksPage';
 
@@ -39,13 +38,10 @@ function App() {
               <Route exact path="/tasks/" render={() => <TasksPage message="No tasks found with the used criteria." filter={`owner__profile=${profile_id}&`}></TasksPage>} />
               <Route exact path="/task/create" render={() => <TaskForm></TaskForm>} />
               <Route exact path="/tasks/:id" render={() => <TaskView></TaskView>} />
-              <Route exact path="/tasks/delete/:id" render={() => <h1>Delete the task</h1>} />
-              <Route exact path="/tasks/edit/:id" render={() => <h1>Edit the task</h1>} />
               <Route exact path="/project/add" render={() => <ProjectForm></ProjectForm>} />
               <Route exact path="/projects/" render={() => <ProjectsPage></ProjectsPage>} />
               <Route exact path="/projects/:id" render={() => <ProjectView></ProjectView>} />
-              <Route exact path="/projects/delete/:id" render={() => <h1>Delete the project</h1>} />
-              <Route exact path="/projects/edit/:id" render={() => <h1>Edit the project</h1>} />
+
               <Route render={() => 
               <p>The gods are wise, but they can't seem to understand your request!</p>} />
             </Switch>

@@ -2,11 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
 
-import appStyles from "../../App.module.css";
 import axios from "axios";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import Task from "./Task";
 
 function TaskView() {

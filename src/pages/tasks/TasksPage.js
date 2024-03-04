@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Task from './Task';
-import TaskView from './TaskView';
 import { Button, Card, Form, Modal } from "react-bootstrap";
-import { useHistory } from 'react-router-dom';
-
 
 function TasksPage() {
   const [tasks, setTasks] = useState([]);
